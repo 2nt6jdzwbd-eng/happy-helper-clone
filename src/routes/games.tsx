@@ -138,6 +138,7 @@ function GamesPage() {
         <div className="mt-6 overflow-hidden rounded-md border border-border bg-card sm:mt-8">
           <video
             src="https://www.image2url.com/r2/default/videos/1787270560353-b5f64dc7-8096-44ba-9e0e-9562eaf7738c.mov"
+            poster={crash}
             autoPlay loop muted playsInline controls preload="metadata"
             className="aspect-video max-h-[390px] w-full bg-card object-cover"
           />
