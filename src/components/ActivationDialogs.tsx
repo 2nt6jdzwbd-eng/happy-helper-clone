@@ -48,7 +48,7 @@ export function ChoiceDialog({
             onClick={r.action}
             className="group flex items-center gap-3 rounded-2xl border border-primary/35 bg-transparent p-3 text-left transition active:scale-[0.98] hover:border-primary"
           >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/50 text-primary shadow-[0_0_18px_rgba(144,214,0,0.25)]">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/50 text-primary shadow-[0_0_18px_rgba(242,184,56,0.25)]">
               <r.icon className="h-5 w-5" />
             </span>
             <span className="min-w-0">

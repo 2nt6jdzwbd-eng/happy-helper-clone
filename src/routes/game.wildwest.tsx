@@ -51,7 +51,7 @@ function WildWestGame() {
               style={{ width: 80, height: 30 }}
               className={`rounded-md border text-xs font-black transition ${
                 mode === m
-                  ? "border-primary bg-primary text-black shadow-[0_0_18px_rgba(144,214,0,0.5)]"
+                  ? "border-primary bg-primary text-black shadow-[0_0_18px_rgba(242,184,56,0.5)]"
                   : "border-primary/50 bg-transparent text-foreground"
               }`}
             >

@@ -155,7 +155,7 @@ function GamesPage() {
         <Logo size={120} />
 
         <div
-          className="mx-auto mt-5 flex items-center justify-center overflow-hidden rounded-2xl border border-primary/40 bg-black/40 shadow-[0_0_35px_rgba(144,214,0,0.18)]"
+          className="mx-auto mt-5 flex items-center justify-center overflow-hidden rounded-2xl border border-primary/40 bg-black/40 shadow-[0_0_35px_rgba(242,184,56,0.18)]"
           style={{ width: 380, maxWidth: "100%", height: 200 }}
         >
           <video
@@ -216,7 +216,7 @@ function GamesPage() {
               </div>
 
               <div
-                className="group relative overflow-hidden rounded-2xl border border-primary/40 bg-transparent shadow-[0_0_35px_rgba(144,214,0,0.18)] backdrop-blur-sm"
+                className="group relative overflow-hidden rounded-2xl border border-primary/40 bg-transparent shadow-[0_0_35px_rgba(242,184,56,0.18)] backdrop-blur-sm"
                 style={{ width: 280, height: 180 }}
               >
                 <img

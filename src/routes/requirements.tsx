@@ -624,7 +624,7 @@ function RequirementsPage() {
             value={userId}
             onChange={(e) => setUserId(e.target.value.replace(/\D/g, ""))}
             placeholder="أدخل الـ ID الخاص بك"
-            className={`w-full rounded-xl border bg-transparent px-4 py-3 text-center text-lg tracking-[0.25em] text-foreground outline-none placeholder:text-sm placeholder:tracking-normal placeholder:text-muted-foreground focus:shadow-[0_0_22px_rgba(144,214,0,0.25)] ${
+            className={`w-full rounded-xl border bg-transparent px-4 py-3 text-center text-lg tracking-[0.25em] text-foreground outline-none placeholder:text-sm placeholder:tracking-normal placeholder:text-muted-foreground focus:shadow-[0_0_22px_rgba(242,184,56,0.25)] ${
               userId.length > 0 && !isValidId
                 ? "border-red-500 focus:border-red-500"
                 : "border-primary/40 focus:border-primary"

@@ -26,7 +26,7 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
         {/* outer pulse halo */}
         <span
           className="absolute h-[110px] w-[110px] animate-ping rounded-2xl"
-          style={{ backgroundColor: "rgba(144,214,0,0.10)" }}
+          style={{ backgroundColor: "rgba(242,184,56,0.10)" }}
         />
         {/* rotating dashed ring */}
         <svg
@@ -52,7 +52,7 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
             width: 80,
             height: 80,
             borderColor: "var(--primary)",
-            boxShadow: "0 0 34px rgba(144,214,0,0.45), inset 0 0 18px rgba(144,214,0,0.15)",
+            boxShadow: "0 0 34px rgba(242,184,56,0.45), inset 0 0 18px rgba(242,184,56,0.15)",
           }}
         >
           {/* corner ticks */}
@@ -71,7 +71,7 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
               strokeLinecap="round"
               strokeDasharray={c}
               strokeDashoffset={c - (pct / 100) * c}
-              style={{ filter: "drop-shadow(0 0 6px rgba(144,214,0,0.9))" }}
+              style={{ filter: "drop-shadow(0 0 6px rgba(242,184,56,0.9))" }}
             />
           </svg>
 

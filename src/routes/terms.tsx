@@ -88,7 +88,7 @@ function TimelineStep({
         <span
           className={`absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full border text-xs font-black transition-all ${
             done || active
-              ? "border-primary text-primary shadow-[0_0_20px_rgba(144,214,0,0.35)]"
+              ? "border-primary text-primary shadow-[0_0_20px_rgba(242,184,56,0.35)]"
               : "border-border text-muted-foreground"
           }`}
         >
@@ -151,7 +151,7 @@ function TermsPage() {
       <div className="mx-auto max-w-md px-4 pt-6">
         {/* hero */}
         <div className="relative overflow-hidden rounded-3xl border border-primary/25 p-5 text-center backdrop-blur-[2px]">
-          <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(144,214,0,0.18),transparent_65%)]" />
+          <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(242,184,56,0.18),transparent_65%)]" />
           <div className="relative">
             <Logo size={96} />
             <h1 className="mt-3 text-2xl">
@@ -170,7 +170,7 @@ function TermsPage() {
               className="relative mx-auto overflow-hidden rounded-xl border border-primary/40 bg-transparent"
               style={{ width: 280, height: 180 }}
             >
-              <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_40%,rgba(144,214,0,0.12)_50%,transparent_60%)]" />
+              <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_40%,rgba(242,184,56,0.12)_50%,transparent_60%)]" />
               {platform ? (
                 <video
                   key={platform}
@@ -205,7 +205,7 @@ function TermsPage() {
                   style={{ width: 150, height: 80 }}
                   className={`group relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-xl border bg-transparent text-sm font-black transition-all active:scale-95 ${
                     platform === p.name
-                      ? "border-primary text-primary shadow-[0_0_26px_rgba(144,214,0,0.35)]"
+                      ? "border-primary text-primary shadow-[0_0_26px_rgba(242,184,56,0.35)]"
                       : "border-border text-foreground/80 hover:border-primary/50"
                   }`}
                 >
@@ -247,7 +247,7 @@ function TermsPage() {
               className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-black text-primary-foreground transition active:scale-95 disabled:opacity-40"
               style={{
                 backgroundColor: "var(--primary)",
-                boxShadow: ready ? "0 0 30px rgba(144,214,0,0.5)" : "none",
+                boxShadow: ready ? "0 0 30px rgba(242,184,56,0.5)" : "none",
               }}
             >
               <ShieldCheck className="h-4 w-4" /> الحصول على كود تفعيل
