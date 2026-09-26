@@ -128,10 +128,20 @@ export type Database = {
         }[]
       }
       request_status: { Args: { _user_id: string }; Returns: string }
-      submit_proof: {
-        Args: { _img1: string; _img2: string; _user_id: string }
-        Returns: string
-      }
+      submit_proof:
+        | {
+            Args: { _img1: string; _img2: string; _user_id: string }
+            Returns: string
+          }
+        | {
+            Args: {
+              _force?: boolean
+              _img1: string
+              _img2: string
+              _user_id: string
+            }
+            Returns: string
+          }
       telegram_id_for_user: { Args: { _user_id: string }; Returns: string }
       verify_activation_code: {
         Args: { _code: string }
