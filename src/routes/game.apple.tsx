@@ -1,0 +1,140 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useRequireSession } from "@/lib/guard";
+import { useState } from "react";
+import { Play, RotateCcw } from "lucide-react";
+import { TopBar } from "@/components/TopBar";
+import { Logo } from "@/components/Logo";
+import { GameHeaderStats } from "@/components/GameHeaderStats";
+import { WinFeed } from "@/components/WinFeed";
+import {
+  fetchAppleLayout,
+  isFirebaseMode,
+  randomAppleLayout,
+  resetAppleLayout,
+} from "@/lib/firebase-signals";
+
+export const Route = createFileRoute("/game/apple")({
+  head: () => ({
+    meta: [
+      { title: "سكربت التفاحه Apple of Fortune Script | كريزي سكربت" },
+      {
+        name: "description",
+        content:
+          "سكربت التفاحه (apple of fortune script) من كريزي سكربت: إشارات التفاحة السليمة في كل صف ونسب المضاعفة لحظة بلحظة.",
+      },
+      { property: "og:title", content: "سكربت التفاحه Apple of Fortune Script | كريزي سكربت" },
+      { property: "og:description", content: "احصل على إشارات التفاحة السليمة في كل صف مع سكربت التفاحه." },
+      { name: "keywords", content: "سكربت التفاحه, اسكربت التفاحه, apple of fortune script, كريزي سكربت, crazy script" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/game/apple" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        property: "og:image",
+        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
+      },
+      {
+        name: "twitter:image",
+        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
+      },
+    ],
+    links: [{ rel: "canonical", href: "/game/apple" }],
+  }),
+
+  component: AppleGame,
+});
+
+const CLOSED = "https://logo12.gamer.gd/cvb.png";
+const GOOD = "https://logo12.gamer.gd/apple.png";
+const BAD = "https://logo12.gamer.gd/poi.png";
+
+// bottom row -> top row
+const ODDS = ["1.23", "1.54", "1.93", "2.41", "4.02", "6.71", "11.18", "27.97", "69.93", "349.43"];
+
+function AppleGame() {
+  useRequireSession();
+  const [rows, setRows] = useState<boolean[][] | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const start = async () => {
+    if (busy) return;
+    setBusy(true);
+    if (isFirebaseMode()) {
+      const layout = await fetchAppleLayout();
+      setRows(layout);
+    } else {
+      setRows(randomAppleLayout());
+    }
+    setBusy(false);
+  };
+
+  const reset = async () => {
+    if (busy) return;
+    setBusy(true);
+    setRows(null);
+    if (isFirebaseMode()) {
+      // اعاده بدأ: تكتب توزيع جديد للتفاح الفاسد في Firebase (m1..m50)
+      await resetAppleLayout();
+    }
+    setBusy(false);
+  };
+
+  return (
+    <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-16">
+      <TopBar />
+      <GameHeaderStats />
+
+      <div className="mx-auto max-w-md px-4 pt-4">
+        <Logo size={84} />
+
+        <div className="mt-5 flex flex-col gap-2">
+          {ODDS.slice().reverse().map((odd, rowIdxFromTop) => {
+            const rowIndex = 9 - rowIdxFromTop;
+            const row = rows?.[rowIndex];
+            return (
+              <div key={odd} className="flex items-center justify-center gap-2">
+                <span className="mr-1 w-14 rounded-md border border-primary/35 py-1 text-center text-[11px] font-black text-primary">
+                  {odd}
+                </span>
+                {Array.from({ length: 5 }).map((_, c) => {
+                  const src = rows == null ? CLOSED : row?.[c] ? BAD : GOOD;
+                  return (
+                    <span
+                      key={c}
+                      style={{ width: 45, height: 45, animationDelay: `${rowIdxFromTop * 90 + c * 45}ms` }}
+                      className="animate-scale-in overflow-hidden rounded-lg border border-primary/30 bg-black/30"
+                    >
+                      <img src={src} alt="cell" loading="lazy" width={45} height={45} className="h-full w-full object-cover" />
+                    </span>
+                  );
+                })}
+              </div>
+
+            );
+          })}
+        </div>
+
+        <div className="mt-6 flex gap-3">
+          <button
+            onClick={start}
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
+            style={{ backgroundColor: "#90D600", boxShadow: "0 0 26px rgba(144,214,0,0.45)" }}
+          >
+            <Play className="h-4 w-4" /> بدأ
+          </button>
+          <button
+            onClick={reset}
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-sm font-black text-black transition active:scale-95"
+          >
+            <RotateCcw className="h-4 w-4" /> اعاده بدأ
+          </button>
+        </div>
+
+        <WinFeed />
+
+        <p className="mt-10 text-center text-xs text-muted-foreground">
+          كل الحقوق محفوظة لدى منصة crazy script
+        </p>
+      </div>
+    </main>
+  );
+}
