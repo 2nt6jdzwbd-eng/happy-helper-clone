@@ -6,6 +6,7 @@ import { TopBar } from "@/components/TopBar";
 import { Logo } from "@/components/Logo";
 import { GameHeaderStats } from "@/components/GameHeaderStats";
 import { WinFeed } from "@/components/WinFeed";
+import { Button } from "@/components/ui/button";
 import { fetchAviatorOdd, isFirebaseMode } from "@/lib/firebase-signals";
 
 export const Route = createFileRoute("/game/aviator")({
@@ -102,9 +103,9 @@ function AviatorGame() {
       <GameHeaderStats />
 
       <div className="mx-auto max-w-md px-4 pt-4">
-        <Logo size={84} />
+        <h1 className="border-b border-border pb-3 text-center text-4xl leading-none">CRASH / AVIATOR</h1>
 
-        <div className="relative mt-5 overflow-hidden rounded-2xl border border-primary/40 bg-black/30 backdrop-blur-sm">
+         <div className="relative mt-5 overflow-hidden rounded-md border border-border bg-card">
           <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="aviator curve">
             <defs>
               <linearGradient id="av-line" x1="0" y1="1" x2="1" y2="0">
@@ -136,19 +137,19 @@ function AviatorGame() {
         </div>
 
         <div className="mt-6 flex gap-3">
-          <button
+           <Button
             onClick={start}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 26px color-mix(in oklab, var(--primary) 50%, transparent)" }}
+             className="h-11 flex-1 rounded-sm text-sm font-black active:scale-95"
           >
             <Play className="h-4 w-4" /> بدأ
-          </button>
-          <button
+           </Button>
+           <Button
+             variant="secondary"
             onClick={reset}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-sm font-black text-black transition active:scale-95"
+             className="h-11 flex-1 rounded-sm border border-border text-sm font-black active:scale-95"
           >
             <RotateCcw className="h-4 w-4" /> اعاده بدأ
-          </button>
+           </Button>
         </div>
 
         <WinFeed />
@@ -165,13 +166,12 @@ function AviatorGame() {
             <p className="mt-2 text-sm text-muted-foreground">
               لوجود ضغط علي سيرفر اللعبه حاليا
             </p>
-            <button
+             <Button
               onClick={() => setBusy(false)}
-              className="mt-5 w-full rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-              style={{ backgroundColor: "var(--primary)" }}
+               className="mt-5 w-full rounded-sm py-3 text-sm font-black active:scale-95"
             >
               حسناً
-            </button>
+             </Button>
           </div>
         </div>
       )}
