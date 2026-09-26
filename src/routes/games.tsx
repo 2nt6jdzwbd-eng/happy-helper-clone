@@ -23,7 +23,7 @@ export const Route = createFileRoute("/games")({
       {
         name: "description",
         content:
-          "كريزي سكربت (crazy script): سكربت الطياره Aviator، سكربت التفاحه Apple of Fortune script، crash script، ماينز والأكواب — إشارات وكود تفعيل مجاني.",
+          "كريزي سكربت (crazy script): سكربت الطياره Aviator، سكربت التفاحه Apple of Fortune script، crash script — إشارات وكود تفعيل مجاني.",
       },
       {
         name: "keywords",
@@ -178,7 +178,7 @@ function GamesPage() {
           Premium signals · أعلى نسبة فوز اليوم
         </p>
         <p className="mt-1 text-center text-xs text-muted-foreground">
-          كريزي سكربت (crazy script) — سكربت الطياره Aviator وسكربت التفاحه Apple of Fortune وماينز والأكواب
+          كريزي سكربت (crazy script) — سكربت الطياره Aviator وسكربت التفاحه Apple of Fortune
         </p>
 
 

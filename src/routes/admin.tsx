@@ -47,7 +47,7 @@ const rpc = supabase.rpc.bind(supabase) as unknown as (
 
 const PLATFORM_NAMES = ["Ultrapari", "1xBet", "LineBet", "WinWin", "GreenBet"];
 
-const GAME_NAMES = ["Apple of fortune", "Crash", "Gems Mines", "Thimbles", "Wild West"];
+const GAME_NAMES = ["Apple of fortune", "Crash"];
 
 function AdminPage() {
   const navigate = useNavigate();
