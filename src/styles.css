@@ -62,26 +62,26 @@
 }
 
 :root {
-  --radius: 1rem;
-  --background: oklch(0.14 0.02 285);
-  --foreground: oklch(0.97 0.01 90);
-  --card: oklch(0.19 0.025 285);
-  --card-foreground: oklch(0.97 0.01 90);
-  --popover: oklch(0.17 0.025 285);
-  --popover-foreground: oklch(0.97 0.01 90);
-  --primary: oklch(0.83 0.16 80);
-  --primary-foreground: oklch(0.16 0.03 285);
-  --secondary: oklch(0.25 0.03 285);
-  --secondary-foreground: oklch(0.97 0.01 90);
-  --muted: oklch(0.24 0.025 285);
-  --muted-foreground: oklch(0.72 0.03 285);
-  --accent: oklch(0.65 0.22 15);
-  --accent-foreground: oklch(0.98 0.01 90);
+  --radius: 0.5rem;
+  --background: #101113;
+  --foreground: #F1F2F2;
+  --card: #1a1c1e;
+  --card-foreground: #F1F2F2;
+  --popover: #1a1c1e;
+  --popover-foreground: #F1F2F2;
+  --primary: #C82836;
+  --primary-foreground: #F1F2F2;
+  --secondary: #26292d;
+  --secondary-foreground: #F1F2F2;
+  --muted: #26292d;
+  --muted-foreground: #a3a9ae;
+  --accent: #737B83;
+  --accent-foreground: #F1F2F2;
   --destructive: oklch(0.62 0.23 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.32 0.04 285);
-  --input: oklch(0.28 0.03 285);
-  --ring: oklch(0.83 0.16 80);
+  --border: #3b4045;
+  --input: #303439;
+  --ring: #C82836;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -139,17 +139,19 @@
 
   body {
     background-color: var(--color-background);
-    background-image:
-      radial-gradient(60rem 30rem at 100% -10%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 60%),
-      radial-gradient(50rem 30rem at -10% 110%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%);
-    background-attachment: fixed;
+    background-image: none;
     color: var(--color-foreground);
-    font-family: "Tajawal", "Sora", system-ui, sans-serif;
+    font-family: "Barlow", "Tajawal", system-ui, sans-serif;
   }
-  h1, h2, h3, button {
-    font-family: "Sora", "Tajawal", system-ui, sans-serif;
-    letter-spacing: -0.01em;
+  h1, h2, h3 {
+    font-family: "Bebas Neue", "Tajawal", system-ui, sans-serif;
+    letter-spacing: 0;
   }
+  button { font-family: "Barlow", "Tajawal", system-ui, sans-serif; letter-spacing: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
 /* --- app animations --- */

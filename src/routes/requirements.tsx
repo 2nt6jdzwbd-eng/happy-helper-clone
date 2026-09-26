@@ -26,11 +26,11 @@ import {
   Lock,
 } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
 import { VerifySequenceDialog } from "@/components/VerifySequenceDialog";
 import { CodeDialog } from "@/components/ActivationDialogs";
+import { Button } from "@/components/ui/button";
 import imgDownload from "@/assets/step-download.jpg";
 import imgTelegram from "@/assets/step-telegram.jpg";
 import imgPromo from "@/assets/step-promo.jpg";
@@ -87,7 +87,7 @@ function Ring({ value }: { value: number }) {
   const c = 2 * Math.PI * r;
   return (
     <svg viewBox="0 0 72 72" className="h-[72px] w-[72px] -rotate-90">
-      <circle cx="36" cy="36" r={r} fill="none" stroke="hsl(0 0% 100% / 0.12)" strokeWidth="5" />
+       <circle cx="36" cy="36" r={r} fill="none" stroke="var(--border)" strokeWidth="5" />
       <circle
         cx="36"
         cy="36"
@@ -98,7 +98,7 @@ function Ring({ value }: { value: number }) {
         strokeLinecap="round"
         strokeDasharray={c}
         strokeDashoffset={c - (c * value) / 100}
-        style={{ transition: "stroke-dashoffset .6s ease", filter: "drop-shadow(0 0 6px var(--primary))" }}
+         className="transition-all duration-700"
       />
     </svg>
   );
@@ -118,21 +118,20 @@ function ActionBtn({
   tone?: "white" | "lime";
 }) {
   return (
-    <button
+    <Button
       onClick={onClick}
       className={[
-        "group flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-extrabold transition active:scale-[0.97]",
+        "group flex h-auto w-full items-center justify-center gap-2 rounded-sm py-3 text-sm font-extrabold transition active:scale-[0.97]",
         done
           ? "border border-primary/60 bg-transparent text-primary"
           : tone === "lime"
-            ? "text-black"
-            : "border border-white/70 bg-white/95 text-black",
+            ? "bg-primary text-primary-foreground"
+            : "border border-border bg-secondary text-secondary-foreground",
       ].join(" ")}
-      style={!done && tone === "lime" ? { backgroundColor: "var(--primary)" } : undefined}
     >
       {done ? <Check className="h-4 w-4" /> : <Icon className="h-4 w-4" />}
       {done ? "تم" : label}
-    </button>
+    </Button>
   );
 }
 
@@ -171,12 +170,11 @@ function StepBlock({
             ? "border-primary bg-primary/15 text-primary"
             : "border-primary/30 text-muted-foreground"
         }`}
-        style={done ? { boxShadow: "0 0 18px color-mix(in oklab, var(--primary) 35%, transparent)" } : undefined}
       >
         {done ? <Check className="h-5 w-5" /> : String(index).padStart(2, "0")}
       </span>
 
-      <article className="overflow-hidden rounded-2xl border border-primary/25 bg-transparent backdrop-blur-sm">
+       <article className="overflow-hidden rounded-md border border-border bg-card">
         <header className="flex items-center gap-3 border-b border-primary/15 p-3">
           <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-primary/30">
             <img
@@ -487,14 +485,13 @@ function RequirementsPage() {
     <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-32">
       <TopBar />
 
-      <div className="mx-auto max-w-md px-4 pt-6">
-        <Logo size={96} />
-        <h1 className="mt-3 text-center text-xl">
+       <div className="mx-auto max-w-xl px-4 pt-6">
+         <h1 className="mt-3 border-b border-border pb-3 text-center text-5xl leading-none">
           <Brand />
         </h1>
 
         {/* progress header */}
-        <section className="mt-5 flex items-center gap-4 rounded-2xl border border-primary/25 bg-transparent p-4 backdrop-blur-sm">
+         <section className="mt-5 flex items-center gap-4 rounded-md border border-border bg-card p-4">
           <div className="relative shrink-0">
             <Ring value={progress} />
             <span className="absolute inset-0 flex items-center justify-center text-sm font-black text-primary">
@@ -507,10 +504,10 @@ function RequirementsPage() {
               أكمل {5 - completed > 0 ? `${5 - completed} خطوات متبقية` : "كل الخطوات"} لتفعيل حسابك
               على منصة <span className="font-bold text-primary">{platform}</span>
             </p>
-            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
               <div
-                className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${progress}%`, backgroundColor: "var(--primary)", boxShadow: "0 0 10px var(--primary)" }}
+                 className="h-full rounded-full bg-primary transition-all duration-700"
+                 style={{ width: `${progress}%` }}
               />
             </div>
           </div>
@@ -566,14 +563,13 @@ function RequirementsPage() {
               <span className="flex-1 text-center text-lg font-black tracking-[0.35em] text-primary">
                 {promo}
               </span>
-              <button
+              <Button
                 onClick={copy}
-                className="rounded-lg px-3 py-2 text-primary-foreground transition active:scale-90"
-                style={{ backgroundColor: "var(--primary)" }}
+                className="h-auto rounded-sm px-3 py-2 text-primary-foreground transition active:scale-90"
                 aria-label="نسخ البروموكود"
               >
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              </button>
+              </Button>
             </div>
           </StepBlock>
 
@@ -624,7 +620,7 @@ function RequirementsPage() {
             value={userId}
             onChange={(e) => setUserId(e.target.value.replace(/\D/g, ""))}
             placeholder="أدخل الـ ID الخاص بك"
-            className={`w-full rounded-xl border bg-transparent px-4 py-3 text-center text-lg tracking-[0.25em] text-foreground outline-none placeholder:text-sm placeholder:tracking-normal placeholder:text-muted-foreground focus:shadow-[0_0_22px_rgba(242,184,56,0.25)] ${
+             className={`w-full rounded-sm border bg-background px-4 py-3 text-center text-lg text-foreground outline-none placeholder:text-sm placeholder:text-muted-foreground focus:ring-1 focus:ring-primary ${
               userId.length > 0 && !isValidId
                 ? "border-red-500 focus:border-red-500"
                 : "border-primary/40 focus:border-primary"
@@ -650,18 +646,18 @@ function RequirementsPage() {
       {/* sticky verify bar */}
       <div className="fixed inset-x-0 bottom-0 z-20 border-t border-primary/20 bg-background/70 px-4 py-3 backdrop-blur-md">
         <div className="mx-auto max-w-md">
-          <button
+           <Button
             onClick={verify}
             
-            className={`flex w-full items-center justify-center gap-2 rounded-full py-3.5 font-extrabold transition active:scale-[0.97] ${
+             className={`flex h-auto w-full items-center justify-center gap-2 rounded-sm py-3.5 font-extrabold transition active:scale-[0.97] ${
               allDone
-                ? "border border-white/70 bg-white/95 text-black"
-                : "border border-white/20 bg-white/10 text-muted-foreground"
+                 ? "bg-primary text-primary-foreground"
+                 : "border border-border bg-secondary text-muted-foreground"
             }`}
           >
             {allDone ? <ShieldCheck className="h-5 w-5" /> : <Lock className="h-4 w-4" />}
             التحقق من الشروط
-          </button>
+           </Button>
           <p className="mt-2 text-center text-[10px] text-muted-foreground">
             كل الحقوق محفوظة لدى منصة crazy script
           </p>
@@ -669,8 +665,8 @@ function RequirementsPage() {
       </div>
 
       {blocked && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-2xl border border-primary/30 bg-background p-5 text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-6 backdrop-blur-sm">
+           <div className="w-full max-w-sm rounded-md border border-border bg-card p-5 text-center">
             <p className="text-sm font-bold leading-relaxed text-foreground">
               {blocked === "approved"
                 ? "هذا الأيدي حصل على الاشتراك بالفعل. للحصول على اشتراك مرة أخرى لازم تنشئ حساب جديد بأيدي جديد وتعمل إيداع جديد."
@@ -699,26 +695,23 @@ function RequirementsPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                 <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full rounded-full transition-all duration-1000"
+                     className="h-full rounded-full bg-primary transition-all duration-1000"
                     style={{
                       width: `${Math.max(0, Math.min(100, (waitLeft / 3600) * 100))}%`,
-                      backgroundColor: "var(--primary)",
-                      boxShadow: "0 0 10px var(--primary)",
                     }}
                   />
                 </div>
                 <p className="mt-2 text-[11px] text-muted-foreground">الوقت المتبقي</p>
               </div>
             )}
-            <button
+             <Button
               onClick={() => setBlocked(null)}
-              className="mt-4 w-full rounded-full py-3 text-sm font-black text-black"
-              style={{ backgroundColor: "var(--primary)" }}
+               className="mt-4 w-full rounded-sm py-3 text-sm font-black"
             >
               حسناً
-            </button>
+             </Button>
           </div>
         </div>
       )}

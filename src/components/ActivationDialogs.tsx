@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { KeyRound, Ticket, ShieldCheck, Loader2, Clock, XCircle } from "lucide-react";
 import { Overlay } from "@/components/Overlay";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import {
   saveSession,
@@ -43,19 +44,20 @@ export function ChoiceDialog({
       <h3 className="mb-4 text-center text-base font-black text-foreground">اختر طريقة الدخول</h3>
       <div className="flex flex-col gap-3">
         {rows.map((r) => (
-          <button
+          <Button
             key={r.label}
             onClick={r.action}
-            className="group flex items-center gap-3 rounded-2xl border border-primary/35 bg-transparent p-3 text-left transition active:scale-[0.98] hover:border-primary"
+            variant="outline"
+            className="group h-auto flex items-center justify-start gap-3 rounded-md border-border bg-card p-3 text-left transition active:scale-[0.98] hover:border-primary"
           >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/50 text-primary shadow-[0_0_18px_rgba(242,184,56,0.25)]">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border border-primary/50 text-primary">
               <r.icon className="h-5 w-5" />
             </span>
             <span className="min-w-0">
               <span className="block text-sm font-extrabold text-foreground">{r.label}</span>
               <span className="block text-[11px] text-muted-foreground">{r.sub}</span>
             </span>
-          </button>
+          </Button>
         ))}
       </div>
     </Overlay>
@@ -181,14 +183,14 @@ export function CodeDialog({
         className="w-full rounded-xl border border-primary/40 bg-transparent px-3 py-3 text-center text-sm font-bold tracking-[0.15em] text-foreground outline-none focus:border-primary"
       />
       {error && <p className="mt-2 text-center text-xs font-bold text-red-400">{error}</p>}
-      <button
+      <Button
         onClick={() => verifyCode(code)}
         disabled={busy}
-        className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-sm font-black text-black transition active:scale-95 disabled:opacity-60"
+        className="mt-4 flex h-11 w-full items-center justify-center gap-2 rounded-sm text-sm font-black transition active:scale-95 disabled:opacity-60"
       >
         {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ShieldCheck className="h-4 w-4" />}
         التحقق
-      </button>
+      </Button>
 
       {history.length > 0 && (
         <div className="mt-5 border-t border-primary/20 pt-4" dir="rtl">
@@ -199,14 +201,15 @@ export function CodeDialog({
             {history.map((h) => {
               const valid = isCodeValid(h);
               return (
-                <button
+                 <Button
                   key={h.code}
                   onClick={() => valid && verifyCode(h.code)}
                   disabled={!valid || busy}
-                  className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-right transition ${
+                   variant="outline"
+                   className={`flex h-auto items-center justify-between gap-2 rounded-sm border px-3 py-2 text-right transition ${
                     valid
                       ? "border-primary/50 text-foreground active:scale-[0.98] hover:border-primary"
-                      : "border-white/15 text-muted-foreground opacity-70"
+                       : "border-border text-muted-foreground opacity-70"
                   }`}
                 >
                   <span className="font-mono text-[11px] font-bold tracking-wider">{h.code}</span>
@@ -218,7 +221,7 @@ export function CodeDialog({
                     {valid ? <Clock className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
                     {valid ? "صالح" : "منتهي"}
                   </span>
-                </button>
+                 </Button>
               );
             })}
           </div>

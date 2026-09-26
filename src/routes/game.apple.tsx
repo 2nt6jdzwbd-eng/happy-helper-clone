@@ -3,9 +3,9 @@ import { useRequireSession } from "@/lib/guard";
 import { useState } from "react";
 import { Play, RotateCcw } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { GameHeaderStats } from "@/components/GameHeaderStats";
 import { WinFeed } from "@/components/WinFeed";
+import { Button } from "@/components/ui/button";
 import {
   fetchAppleLayout,
   isFirebaseMode,
@@ -28,14 +28,6 @@ export const Route = createFileRoute("/game/apple")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/game/apple" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        property: "og:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
-      {
-        name: "twitter:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
     ],
     links: [{ rel: "canonical", href: "/game/apple" }],
   }),
@@ -84,7 +76,7 @@ function AppleGame() {
       <GameHeaderStats />
 
       <div className="mx-auto max-w-md px-4 pt-4">
-        <Logo size={84} />
+        <h1 className="border-b border-border pb-3 text-center text-4xl leading-none">APPLE OF FORTUNE</h1>
 
         <div className="mt-5 flex flex-col gap-2">
           {ODDS.slice().reverse().map((odd, rowIdxFromTop) => {
@@ -101,7 +93,7 @@ function AppleGame() {
                     <span
                       key={c}
                       style={{ width: 45, height: 45, animationDelay: `${rowIdxFromTop * 90 + c * 45}ms` }}
-                      className="animate-scale-in overflow-hidden rounded-lg border border-primary/30 bg-black/30"
+                      className="animate-scale-in overflow-hidden rounded-sm border border-border bg-card"
                     >
                       <img src={src} alt="cell" loading="lazy" width={45} height={45} className="h-full w-full object-cover" />
                     </span>
@@ -114,19 +106,19 @@ function AppleGame() {
         </div>
 
         <div className="mt-6 flex gap-3">
-          <button
+           <Button
             onClick={start}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 26px color-mix(in oklab, var(--primary) 50%, transparent)" }}
+             className="h-11 flex-1 rounded-sm text-sm font-black active:scale-95"
           >
             <Play className="h-4 w-4" /> بدأ
-          </button>
-          <button
+           </Button>
+           <Button
+             variant="secondary"
             onClick={reset}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-sm font-black text-black transition active:scale-95"
+             className="h-11 flex-1 rounded-sm border border-border text-sm font-black active:scale-95"
           >
             <RotateCcw className="h-4 w-4" /> اعاده بدأ
-          </button>
+           </Button>
         </div>
 
         <WinFeed />

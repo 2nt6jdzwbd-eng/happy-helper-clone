@@ -2,9 +2,9 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Check, Headphones, KeyRound, Play, Send, ShieldCheck, Youtube } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
+import { Button } from "@/components/ui/button";
 import logoUltrapari from "@/assets/platform-ultrapari.png";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -21,6 +21,8 @@ export const Route = createFileRoute("/terms")({
       { name: "description", content: "أدخل الـ ID واختر المنصة للحصول على كود التفعيل الخاص بك من CRAZY SCRIPT." },
       { property: "og:title", content: "الشروط — CRAZY SCRIPT" },
       { property: "og:description", content: "خطوات الحصول على كود التفعيل من CRAZY SCRIPT." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: TermsPage,
@@ -88,7 +90,7 @@ function TimelineStep({
         <span
           className={`absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full border text-xs font-black transition-all ${
             done || active
-              ? "border-primary text-primary shadow-[0_0_20px_rgba(242,184,56,0.35)]"
+               ? "border-primary text-primary"
               : "border-border text-muted-foreground"
           }`}
         >
@@ -98,7 +100,7 @@ function TimelineStep({
         <p className="mb-3 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground">
           {label}
         </p>
-        <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-transparent p-4 backdrop-blur-[2px]">
+         <div className="relative overflow-hidden rounded-md border border-border bg-card p-4">
           <span className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-primary/80 via-primary/20 to-transparent" />
           {children}
         </div>
@@ -148,16 +150,14 @@ function TermsPage() {
     <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-16">
       <TopBar />
 
-      <div className="mx-auto max-w-md px-4 pt-6">
+       <div className="mx-auto max-w-xl px-4 pt-6">
         {/* hero */}
-        <div className="relative overflow-hidden rounded-3xl border border-primary/25 p-5 text-center backdrop-blur-[2px]">
-          <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(242,184,56,0.18),transparent_65%)]" />
+         <div className="relative border-b border-border p-5 text-center">
           <div className="relative">
-            <Logo size={96} />
-            <h1 className="mt-3 text-2xl">
+             <h1 className="mt-3 text-5xl leading-none">
               <Brand />
             </h1>
-            <p className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
+             <p className="mt-2 inline-flex items-center gap-1.5 border-l-2 border-primary bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase text-muted-foreground">
               <KeyRound className="h-3 w-3 text-primary" /> activation
             </p>
           </div>
@@ -167,10 +167,9 @@ function TermsPage() {
         <div className="mt-8 space-y-8">
           <TimelineStep n={1} label="step 01 — tutorial" active done={false}>
             <div
-              className="relative mx-auto overflow-hidden rounded-xl border border-primary/40 bg-transparent"
+               className="relative mx-auto overflow-hidden rounded-md border border-border bg-card"
               style={{ width: 280, height: 180 }}
             >
-              <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_40%,rgba(242,184,56,0.12)_50%,transparent_60%)]" />
               {platform ? (
                 <video
                   key={platform}
@@ -199,13 +198,14 @@ function TermsPage() {
 
             <div className="flex flex-wrap justify-center gap-3">
               {PLATFORMS.map((p) => (
-                <button
+                 <Button
                   key={p.name}
                   onClick={() => pick(p.name)}
                   style={{ width: 150, height: 80 }}
-                  className={`group relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-xl border bg-transparent text-sm font-black transition-all active:scale-95 ${
+                   variant="outline"
+                   className={`group relative flex flex-col items-center justify-center gap-1 overflow-hidden rounded-sm border bg-card text-sm font-black transition-all active:scale-95 ${
                     platform === p.name
-                      ? "border-primary text-primary shadow-[0_0_26px_rgba(242,184,56,0.35)]"
+                       ? "border-primary text-primary"
                       : "border-border text-foreground/80 hover:border-primary/50"
                   }`}
                 >
@@ -224,7 +224,7 @@ function TermsPage() {
                       <Check className="h-3.5 w-3.5 text-primary-foreground" />
                     </span>
                   )}
-                </button>
+                 </Button>
               ))}
             </div>
           </TimelineStep>
@@ -237,21 +237,17 @@ function TermsPage() {
               href="https://t.me/A_R_1_R"
               target="_blank"
               rel="noreferrer"
-              className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/70 bg-white/95 py-3.5 text-sm font-bold text-black transition active:scale-95"
+               className="flex flex-1 items-center justify-center gap-2 rounded-sm border border-border bg-secondary py-3.5 text-sm font-bold text-secondary-foreground transition active:scale-95"
             >
               <Headphones className="h-4 w-4" /> التواصل مع الدعم
             </a>
-            <button
+             <Button
               onClick={submit}
               disabled={!ready}
-              className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-black text-primary-foreground transition active:scale-95 disabled:opacity-40"
-              style={{
-                backgroundColor: "var(--primary)",
-                boxShadow: ready ? "0 0 30px rgba(242,184,56,0.5)" : "none",
-              }}
+               className="h-auto flex flex-1 items-center justify-center gap-2 rounded-sm py-3.5 text-sm font-black transition active:scale-95 disabled:opacity-40"
             >
               <ShieldCheck className="h-4 w-4" /> الحصول على كود تفعيل
-            </button>
+             </Button>
           </div>
         </Reveal>
 
@@ -261,7 +257,7 @@ function TermsPage() {
             href="https://t.me/IIIIIIIIIIIIIIIIIIIIII00"
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-transparent py-3 text-sm font-bold text-foreground backdrop-blur-sm transition hover:border-primary"
+             className="flex flex-1 items-center justify-center gap-2 rounded-sm border border-border bg-card py-3 text-sm font-bold text-foreground transition hover:border-primary"
           >
             <Send className="h-4 w-4 text-primary" /> Telegram channel
           </a>
@@ -269,7 +265,7 @@ function TermsPage() {
             href="https://youtube.com/@1xbet1113?si=Qk6ep3-nb1oL2ezq"
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-transparent py-3 text-sm font-bold text-foreground backdrop-blur-sm transition hover:border-primary"
+             className="flex flex-1 items-center justify-center gap-2 rounded-sm border border-border bg-card py-3 text-sm font-bold text-foreground transition hover:border-primary"
           >
             <Youtube className="h-4 w-4 text-primary" /> Youtube channel
           </a>
@@ -281,18 +277,17 @@ function TermsPage() {
       </div>
 
       {maintenance && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6">
-          <div dir="rtl" className="w-full max-w-sm rounded-2xl border border-primary/40 bg-background p-6 text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-6">
+           <div dir="rtl" className="w-full max-w-sm rounded-md border border-border bg-card p-6 text-center">
             <p className="text-sm font-black leading-7 text-foreground">
               المنصة تحت الصيانة الآن، الرجاء اختيار منصة أخرى
             </p>
-            <button
+             <Button
               onClick={() => setMaintenance(false)}
-              className="mt-5 w-full rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-              style={{ backgroundColor: "var(--primary)" }}
+               className="mt-5 w-full rounded-sm py-3 text-sm font-black transition active:scale-95"
             >
               حسناً
-            </button>
+             </Button>
           </div>
         </div>
       )}
