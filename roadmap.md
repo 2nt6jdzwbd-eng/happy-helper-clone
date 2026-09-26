@@ -1,2 +1,2 @@
-- [ ] Apply the chosen black/red/silver visual style to shared elements and the two-game selection screen.
-- [ ] Check the selection-to-activation flow and desktop/mobile rendering.
+- [x] Apply the chosen black/red/silver visual style to shared elements and the two-game selection screen.
+- [x] Check the selection-to-activation flow and desktop/mobile rendering.
