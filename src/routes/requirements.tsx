@@ -87,7 +87,7 @@ function Ring({ value }: { value: number }) {
   const c = 2 * Math.PI * r;
   return (
     <svg viewBox="0 0 72 72" className="h-[72px] w-[72px] -rotate-90">
-      <circle cx="36" cy="36" r={r} fill="none" stroke="hsl(0 0% 100% / 0.12)" strokeWidth="5" />
+       <circle cx="36" cy="36" r={r} fill="none" stroke="var(--border)" strokeWidth="5" />
       <circle
         cx="36"
         cy="36"
@@ -98,7 +98,7 @@ function Ring({ value }: { value: number }) {
         strokeLinecap="round"
         strokeDasharray={c}
         strokeDashoffset={c - (c * value) / 100}
-        style={{ transition: "stroke-dashoffset .6s ease", filter: "drop-shadow(0 0 6px var(--primary))" }}
+         className="transition-all duration-700"
       />
     </svg>
   );
@@ -170,7 +170,6 @@ function StepBlock({
             ? "border-primary bg-primary/15 text-primary"
             : "border-primary/30 text-muted-foreground"
         }`}
-        style={done ? { boxShadow: "0 0 18px color-mix(in oklab, var(--primary) 35%, transparent)" } : undefined}
       >
         {done ? <Check className="h-5 w-5" /> : String(index).padStart(2, "0")}
       </span>
@@ -505,10 +504,10 @@ function RequirementsPage() {
               أكمل {5 - completed > 0 ? `${5 - completed} خطوات متبقية` : "كل الخطوات"} لتفعيل حسابك
               على منصة <span className="font-bold text-primary">{platform}</span>
             </p>
-            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
               <div
-                className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${progress}%`, backgroundColor: "var(--primary)", boxShadow: "0 0 10px var(--primary)" }}
+                 className="h-full rounded-full bg-primary transition-all duration-700"
+                 style={{ width: `${progress}%` }}
               />
             </div>
           </div>
@@ -564,14 +563,13 @@ function RequirementsPage() {
               <span className="flex-1 text-center text-lg font-black tracking-[0.35em] text-primary">
                 {promo}
               </span>
-              <button
+              <Button
                 onClick={copy}
-                className="rounded-lg px-3 py-2 text-primary-foreground transition active:scale-90"
-                style={{ backgroundColor: "var(--primary)" }}
+                className="h-auto rounded-sm px-3 py-2 text-primary-foreground transition active:scale-90"
                 aria-label="نسخ البروموكود"
               >
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              </button>
+              </Button>
             </div>
           </StepBlock>
 
@@ -667,8 +665,8 @@ function RequirementsPage() {
       </div>
 
       {blocked && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-2xl border border-primary/30 bg-background p-5 text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-6 backdrop-blur-sm">
+           <div className="w-full max-w-sm rounded-md border border-border bg-card p-5 text-center">
             <p className="text-sm font-bold leading-relaxed text-foreground">
               {blocked === "approved"
                 ? "هذا الأيدي حصل على الاشتراك بالفعل. للحصول على اشتراك مرة أخرى لازم تنشئ حساب جديد بأيدي جديد وتعمل إيداع جديد."
@@ -697,13 +695,11 @@ function RequirementsPage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                 <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full rounded-full transition-all duration-1000"
+                     className="h-full rounded-full bg-primary transition-all duration-1000"
                     style={{
                       width: `${Math.max(0, Math.min(100, (waitLeft / 3600) * 100))}%`,
-                      backgroundColor: "var(--primary)",
-                      boxShadow: "0 0 10px var(--primary)",
                     }}
                   />
                 </div>

@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { Check, Loader2, Trash2, X } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/admin")({
@@ -334,7 +335,7 @@ function AdminPage() {
                   <button
                     onClick={() => setStatus(r, "rejected")}
                     disabled={busy === r.id}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-red-500/60 py-3 text-sm font-black text-red-400 transition active:scale-95 disabled:opacity-50"
+                     className="flex items-center justify-center gap-2 rounded-sm border border-destructive/60 py-3 text-sm font-black text-destructive transition active:scale-95 disabled:opacity-50"
                   >
                     <X className="h-4 w-4" /> رفض
                   </button>
@@ -359,7 +360,7 @@ function AdminPage() {
               <button
                 onClick={() => remove(r)}
                 disabled={busy === r.id}
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 py-2 text-xs font-bold text-muted-foreground transition active:scale-95 disabled:opacity-50"
+                 className="mt-3 flex w-full items-center justify-center gap-2 rounded-sm border border-border py-2 text-xs font-bold text-muted-foreground transition active:scale-95 disabled:opacity-50"
               >
                 <Trash2 className="h-4 w-4" /> حذف الطلب
               </button>
@@ -371,17 +372,19 @@ function AdminPage() {
       {preview && (
         <div
           onClick={() => setPreview(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+           className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4"
         >
           <img src={preview} alt="معاينة الإثبات" className="max-h-[85vh] max-w-full rounded-xl" />
-          <button
+           <Button
             type="button"
             onClick={() => setPreview(null)}
             aria-label="إغلاق"
-            className="absolute right-4 top-4 rounded-full border border-white/30 p-2 text-foreground"
+             variant="outline"
+             size="icon"
+             className="absolute right-4 top-4 border-border"
           >
             <X className="h-5 w-5" />
-          </button>
+           </Button>
         </div>
       )}
     </main>
