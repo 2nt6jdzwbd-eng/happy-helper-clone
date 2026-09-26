@@ -28,8 +28,8 @@ export function WinFeed() {
   }, []);
 
   return (
-    <section className="mt-8 overflow-hidden rounded-2xl border border-primary/30 bg-transparent backdrop-blur-sm">
-      <header className="flex items-center gap-2 border-b border-primary/20 px-3 py-2">
+    <section className="mt-8 overflow-hidden rounded-md border border-border bg-card">
+      <header className="flex items-center gap-2 border-b border-border px-3 py-2">
         <TrendingUp className="h-4 w-4 text-primary" />
         <span className="text-[11px] font-black uppercase tracking-[0.25em] text-muted-foreground">
           live wins
@@ -38,7 +38,7 @@ export function WinFeed() {
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" /> LIVE
         </span>
       </header>
-      <div className="grid grid-cols-3 border-b border-primary/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+      <div className="grid grid-cols-3 border-b border-border px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
         <span>User id</span>
         <span className="text-center">Bet</span>
         <span className="text-right">Win</span>
@@ -47,7 +47,7 @@ export function WinFeed() {
         {rows.map((r) => (
           <li
             key={r.id}
-            className="grid animate-fade-in grid-cols-3 items-center px-3 py-2 text-xs odd:bg-white/[0.03]"
+            className="grid animate-fade-in grid-cols-3 items-center px-3 py-2 text-xs odd:bg-secondary/40"
           >
             <span className="font-mono text-foreground/80">{r.user}</span>
             <span className="text-center font-bold text-foreground/70">{r.bet}</span>

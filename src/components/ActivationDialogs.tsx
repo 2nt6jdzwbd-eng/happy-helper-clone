@@ -201,14 +201,15 @@ export function CodeDialog({
             {history.map((h) => {
               const valid = isCodeValid(h);
               return (
-                <button
+                 <Button
                   key={h.code}
                   onClick={() => valid && verifyCode(h.code)}
                   disabled={!valid || busy}
-                  className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-right transition ${
+                   variant="outline"
+                   className={`flex h-auto items-center justify-between gap-2 rounded-sm border px-3 py-2 text-right transition ${
                     valid
                       ? "border-primary/50 text-foreground active:scale-[0.98] hover:border-primary"
-                      : "border-white/15 text-muted-foreground opacity-70"
+                       : "border-border text-muted-foreground opacity-70"
                   }`}
                 >
                   <span className="font-mono text-[11px] font-bold tracking-wider">{h.code}</span>
@@ -220,7 +221,7 @@ export function CodeDialog({
                     {valid ? <Clock className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
                     {valid ? "صالح" : "منتهي"}
                   </span>
-                </button>
+                 </Button>
               );
             })}
           </div>

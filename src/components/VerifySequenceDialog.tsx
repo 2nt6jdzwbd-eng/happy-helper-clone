@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Check, Loader2, Send } from "lucide-react";
 import { Overlay } from "@/components/Overlay";
+import { Button } from "@/components/ui/button";
 import { markAwaitingCode, readUserId } from "@/lib/session";
 
 const BOT = "crazyvip1_bot";
@@ -36,15 +37,15 @@ export function VerifySequenceDialog({ open, onClose }: { open: boolean; onClose
           return (
             <li
               key={s}
-              className={`flex items-center gap-3 rounded-xl border p-3 transition ${
+              className={`flex items-center gap-3 rounded-sm border p-3 transition ${
                 state === "idle"
-                  ? "border-white/10 opacity-40"
+                   ? "border-border opacity-40"
                   : state === "active"
                     ? "border-primary/60"
                     : "border-primary bg-primary/10"
               }`}
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-primary/40 text-primary">
+              <span className="flex h-8 w-8 items-center justify-center rounded-sm border border-primary/40 text-primary">
                 {state === "done" ? (
                   <Check className="h-4 w-4" />
                 ) : state === "active" ? (
@@ -60,19 +61,14 @@ export function VerifySequenceDialog({ open, onClose }: { open: boolean; onClose
       </ul>
 
       {stage >= 3 && (
-        <div className="mt-5 animate-fade-in rounded-2xl border border-primary/40 p-4 text-center">
+        <div className="mt-5 animate-fade-in rounded-md border border-border bg-card p-4 text-center">
           <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">telegram bot</p>
           <p className="mt-1 text-lg font-black text-primary">@{BOT}</p>
-          <a
-            href={link}
-            onClick={() => markAwaitingCode()}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 24px color-mix(in oklab, var(--primary) 50%, transparent)" }}
-          >
+          <Button asChild className="mt-4 h-auto w-full rounded-sm py-3 text-sm font-black active:scale-95">
+            <a href={link} onClick={() => markAwaitingCode()} target="_blank" rel="noreferrer">
             <Send className="h-4 w-4" /> الحصول على الكود
-          </a>
+            </a>
+          </Button>
         </div>
       )}
     </Overlay>

@@ -257,7 +257,7 @@ function TermsPage() {
             href="https://t.me/IIIIIIIIIIIIIIIIIIIIII00"
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-transparent py-3 text-sm font-bold text-foreground backdrop-blur-sm transition hover:border-primary"
+             className="flex flex-1 items-center justify-center gap-2 rounded-sm border border-border bg-card py-3 text-sm font-bold text-foreground transition hover:border-primary"
           >
             <Send className="h-4 w-4 text-primary" /> Telegram channel
           </a>
@@ -265,7 +265,7 @@ function TermsPage() {
             href="https://youtube.com/@1xbet1113?si=Qk6ep3-nb1oL2ezq"
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-transparent py-3 text-sm font-bold text-foreground backdrop-blur-sm transition hover:border-primary"
+             className="flex flex-1 items-center justify-center gap-2 rounded-sm border border-border bg-card py-3 text-sm font-bold text-foreground transition hover:border-primary"
           >
             <Youtube className="h-4 w-4 text-primary" /> Youtube channel
           </a>
@@ -277,8 +277,8 @@ function TermsPage() {
       </div>
 
       {maintenance && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6">
-          <div dir="rtl" className="w-full max-w-sm rounded-2xl border border-primary/40 bg-background p-6 text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-6">
+           <div dir="rtl" className="w-full max-w-sm rounded-md border border-border bg-card p-6 text-center">
             <p className="text-sm font-black leading-7 text-foreground">
               المنصة تحت الصيانة الآن، الرجاء اختيار منصة أخرى
             </p>

@@ -13,8 +13,8 @@ import {
   savePendingGame,
 } from "@/lib/session";
 import { supabase } from "@/integrations/supabase/client";
-import apple from "@/assets/game-apple.jpg";
-import crash from "@/assets/game-crash.jpg";
+import apple from "@/assets/game-apple-red.jpg";
+import crash from "@/assets/game-crash-red.jpg";
 
 export const Route = createFileRoute("/games")({
   head: () => ({
@@ -36,14 +36,6 @@ export const Route = createFileRoute("/games")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/games" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        property: "og:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
-      {
-        name: "twitter:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
     ],
     links: [{ rel: "canonical", href: "/games" }],
     scripts: [
@@ -163,7 +155,7 @@ function GamesPage() {
           {GAMES.map((g) => (
             <article key={g.name} className="group flex min-w-0 flex-col overflow-hidden rounded-md border border-border bg-card transition-colors hover:border-primary/70">
               <div className="relative aspect-[2/1] overflow-hidden">
-                <img src={g.img} alt={g.name} width={800} height={512} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                 <img src={g.img} alt={g.name} loading="lazy" width={1024} height={640} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute right-3 top-3 flex items-center gap-2 rounded-sm border border-primary/50 bg-background/90 px-2.5 py-1.5">
                   <span className="text-[10px] font-bold uppercase text-primary">Win rate</span>
                   <span className="font-['Bebas_Neue'] text-lg leading-none text-foreground">{rateOf(g)}</span>

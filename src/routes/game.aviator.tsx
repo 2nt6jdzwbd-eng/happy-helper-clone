@@ -23,14 +23,6 @@ export const Route = createFileRoute("/game/aviator")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/game/aviator" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        property: "og:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
-      {
-        name: "twitter:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
     ],
     links: [{ rel: "canonical", href: "/game/aviator" }],
   }),
@@ -128,7 +120,7 @@ function AviatorGame() {
           </svg>
 
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <span className="text-4xl font-black tracking-tight drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+            <span className="text-4xl font-black tracking-tight">
               <span className="text-primary">x</span>
               <span className="text-foreground">{odd.toFixed(2)}</span>
             </span>
@@ -159,7 +151,7 @@ function AviatorGame() {
       </div>
 
       {busy && (
-        <div dir="rtl" className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6">
+        <div dir="rtl" className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-6">
           <div className="w-full max-w-sm rounded-2xl border border-primary/40 bg-background p-6 text-center">
             <p className="text-base font-black text-foreground">يرجي تجربه لعبه اخري الان</p>
             <p className="mt-2 text-sm text-muted-foreground">

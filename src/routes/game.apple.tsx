@@ -28,14 +28,6 @@ export const Route = createFileRoute("/game/apple")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/game/apple" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        property: "og:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
-      {
-        name: "twitter:image",
-        content: "https://project--45915fe9-9986-4de9-aa3c-9c293e09ef07.lovable.app/logo.png",
-      },
     ],
     links: [{ rel: "canonical", href: "/game/apple" }],
   }),

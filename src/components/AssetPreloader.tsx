@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import logo from "@/assets/logo.png";
+import { Brand } from "@/components/Brand";
 
 // كل صور المشروع (src/assets) تتحمّل قبل ظهور الموقع
 const assetModules = import.meta.glob<string>(
@@ -49,14 +49,10 @@ export function AssetPreloader({ children }: { children: ReactNode }) {
     const pct = total ? Math.round((loaded / total) * 100) : 100;
     return (
       <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-6 bg-background px-8">
-        <img
-          src={logo}
-          alt="CRAZY SCRIPT"
-          className="h-24 w-24 animate-pulse rounded-2xl object-contain"
-        />
-        <div className="h-2 w-full max-w-xs overflow-hidden rounded-full bg-muted">
+        <Brand className="text-5xl" />
+        <div className="h-1 w-full max-w-xs overflow-hidden bg-muted">
           <div
-            className="h-full rounded-full bg-primary transition-all duration-200"
+            className="h-full bg-primary transition-all duration-200"
             style={{ width: `${pct}%` }}
           />
         </div>
