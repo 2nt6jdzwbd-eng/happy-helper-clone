@@ -21,12 +21,11 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
   const c = 2 * Math.PI * r;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md">
       <div className="relative flex items-center justify-center">
         {/* outer pulse halo */}
         <span
-          className="absolute h-[110px] w-[110px] animate-ping rounded-2xl"
-          style={{ backgroundColor: "rgba(242,184,56,0.10)" }}
+           className="absolute h-[110px] w-[110px] animate-ping rounded-md bg-primary/10"
         />
         {/* rotating dashed ring */}
         <svg
@@ -47,12 +46,10 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
         </svg>
 
         <div
-          className="relative flex items-center justify-center rounded-2xl border-2 bg-black"
+           className="relative flex items-center justify-center rounded-md border-2 border-primary bg-card shadow-xl"
           style={{
             width: 80,
             height: 80,
-            borderColor: "var(--primary)",
-            boxShadow: "0 0 34px rgba(242,184,56,0.45), inset 0 0 18px rgba(242,184,56,0.15)",
           }}
         >
           {/* corner ticks */}
@@ -71,7 +68,6 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
               strokeLinecap="round"
               strokeDasharray={c}
               strokeDashoffset={c - (pct / 100) * c}
-              style={{ filter: "drop-shadow(0 0 6px rgba(242,184,56,0.9))" }}
             />
           </svg>
 
