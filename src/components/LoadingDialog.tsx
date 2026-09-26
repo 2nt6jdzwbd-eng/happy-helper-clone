@@ -38,7 +38,7 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
             cy="50"
             r="46"
             fill="none"
-            stroke="#90D600"
+            stroke="var(--primary)"
             strokeOpacity="0.45"
             strokeWidth="1.5"
             strokeDasharray="4 10"
@@ -51,22 +51,22 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
           style={{
             width: 80,
             height: 80,
-            borderColor: "#90D600",
+            borderColor: "var(--primary)",
             boxShadow: "0 0 34px rgba(144,214,0,0.45), inset 0 0 18px rgba(144,214,0,0.15)",
           }}
         >
           {/* corner ticks */}
-          <span className="absolute left-1 top-1 h-2.5 w-2.5 rounded-tl border-l-2 border-t-2" style={{ borderColor: "#90D600" }} />
-          <span className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-br border-b-2 border-r-2" style={{ borderColor: "#90D600" }} />
+          <span className="absolute left-1 top-1 h-2.5 w-2.5 rounded-tl border-l-2 border-t-2" style={{ borderColor: "var(--primary)" }} />
+          <span className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-br border-b-2 border-r-2" style={{ borderColor: "var(--primary)" }} />
 
           <svg width="64" height="64" viewBox="0 0 64 64" className="-rotate-90">
-            <circle cx="32" cy="32" r={r} fill="none" stroke="#90D600" strokeOpacity="0.18" strokeWidth="4" />
+            <circle cx="32" cy="32" r={r} fill="none" stroke="var(--primary)" strokeOpacity="0.18" strokeWidth="4" />
             <circle
               cx="32"
               cy="32"
               r={r}
               fill="none"
-              stroke="#90D600"
+              stroke="var(--primary)"
               strokeWidth="4"
               strokeLinecap="round"
               strokeDasharray={c}
@@ -77,7 +77,7 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
 
           <span
             className="absolute text-[13px] font-black tabular-nums"
-            style={{ color: "#90D600" }}
+            style={{ color: "var(--primary)" }}
           >
             {Math.round(pct)}%
           </span>

@@ -62,26 +62,26 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.16 0.015 150);
-  --foreground: oklch(0.97 0.01 140);
-  --card: oklch(0.21 0.02 150);
-  --card-foreground: oklch(0.97 0.01 140);
-  --popover: oklch(0.18 0.02 150);
-  --popover-foreground: oklch(0.97 0.01 140);
-  --primary: oklch(0.79 0.2 128);
-  --primary-foreground: oklch(0.16 0.02 150);
-  --secondary: oklch(0.27 0.02 150);
-  --secondary-foreground: oklch(0.97 0.01 140);
-  --muted: oklch(0.27 0.02 150);
-  --muted-foreground: oklch(0.72 0.02 145);
-  --accent: oklch(0.79 0.2 128);
-  --accent-foreground: oklch(0.16 0.02 150);
-  --destructive: oklch(0.6 0.23 27);
+  --radius: 1rem;
+  --background: oklch(0.14 0.02 285);
+  --foreground: oklch(0.97 0.01 90);
+  --card: oklch(0.19 0.025 285);
+  --card-foreground: oklch(0.97 0.01 90);
+  --popover: oklch(0.17 0.025 285);
+  --popover-foreground: oklch(0.97 0.01 90);
+  --primary: oklch(0.83 0.16 80);
+  --primary-foreground: oklch(0.16 0.03 285);
+  --secondary: oklch(0.25 0.03 285);
+  --secondary-foreground: oklch(0.97 0.01 90);
+  --muted: oklch(0.24 0.025 285);
+  --muted-foreground: oklch(0.72 0.03 285);
+  --accent: oklch(0.65 0.22 15);
+  --accent-foreground: oklch(0.98 0.01 90);
+  --destructive: oklch(0.62 0.23 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.35 0.05 140);
-  --input: oklch(0.3 0.03 145);
-  --ring: oklch(0.79 0.2 128);
+  --border: oklch(0.32 0.04 285);
+  --input: oklch(0.28 0.03 285);
+  --ring: oklch(0.83 0.16 80);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -139,7 +139,16 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(60rem 30rem at 100% -10%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 60%),
+      radial-gradient(50rem 30rem at -10% 110%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%);
+    background-attachment: fixed;
     color: var(--color-foreground);
+    font-family: "Tajawal", "Sora", system-ui, sans-serif;
+  }
+  h1, h2, h3, button {
+    font-family: "Sora", "Tajawal", system-ui, sans-serif;
+    letter-spacing: -0.01em;
   }
 }
 

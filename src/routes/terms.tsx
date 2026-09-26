@@ -246,7 +246,7 @@ function TermsPage() {
               disabled={!ready}
               className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-black text-primary-foreground transition active:scale-95 disabled:opacity-40"
               style={{
-                backgroundColor: "#90D600",
+                backgroundColor: "var(--primary)",
                 boxShadow: ready ? "0 0 30px rgba(144,214,0,0.5)" : "none",
               }}
             >
@@ -289,7 +289,7 @@ function TermsPage() {
             <button
               onClick={() => setMaintenance(false)}
               className="mt-5 w-full rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-              style={{ backgroundColor: "#90D600" }}
+              style={{ backgroundColor: "var(--primary)" }}
             >
               حسناً
             </button>

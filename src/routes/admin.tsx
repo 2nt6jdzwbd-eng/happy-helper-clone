@@ -347,7 +347,7 @@ function AdminPage() {
                     onClick={() => setStatus(r, "approved")}
                     disabled={busy === r.id}
                     className="flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95 disabled:opacity-50"
-                    style={{ backgroundColor: "#90D600" }}
+                    style={{ backgroundColor: "var(--primary)" }}
                   >
                     <Check className="h-4 w-4" /> قبول
                   </button>

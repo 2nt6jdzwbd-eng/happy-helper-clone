@@ -93,12 +93,12 @@ function Ring({ value }: { value: number }) {
         cy="36"
         r={r}
         fill="none"
-        stroke="#90D600"
+        stroke="var(--primary)"
         strokeWidth="5"
         strokeLinecap="round"
         strokeDasharray={c}
         strokeDashoffset={c - (c * value) / 100}
-        style={{ transition: "stroke-dashoffset .6s ease", filter: "drop-shadow(0 0 6px #90D600)" }}
+        style={{ transition: "stroke-dashoffset .6s ease", filter: "drop-shadow(0 0 6px var(--primary))" }}
       />
     </svg>
   );
@@ -128,7 +128,7 @@ function ActionBtn({
             ? "text-black"
             : "border border-white/70 bg-white/95 text-black",
       ].join(" ")}
-      style={!done && tone === "lime" ? { backgroundColor: "#90D600" } : undefined}
+      style={!done && tone === "lime" ? { backgroundColor: "var(--primary)" } : undefined}
     >
       {done ? <Check className="h-4 w-4" /> : <Icon className="h-4 w-4" />}
       {done ? "تم" : label}
@@ -171,7 +171,7 @@ function StepBlock({
             ? "border-primary bg-primary/15 text-primary"
             : "border-primary/30 text-muted-foreground"
         }`}
-        style={done ? { boxShadow: "0 0 18px #90D60055" } : undefined}
+        style={done ? { boxShadow: "0 0 18px color-mix(in oklab, var(--primary) 35%, transparent)" } : undefined}
       >
         {done ? <Check className="h-5 w-5" /> : String(index).padStart(2, "0")}
       </span>
@@ -510,7 +510,7 @@ function RequirementsPage() {
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
               <div
                 className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${progress}%`, backgroundColor: "#90D600", boxShadow: "0 0 10px #90D600" }}
+                style={{ width: `${progress}%`, backgroundColor: "var(--primary)", boxShadow: "0 0 10px var(--primary)" }}
               />
             </div>
           </div>
@@ -569,7 +569,7 @@ function RequirementsPage() {
               <button
                 onClick={copy}
                 className="rounded-lg px-3 py-2 text-primary-foreground transition active:scale-90"
-                style={{ backgroundColor: "#90D600" }}
+                style={{ backgroundColor: "var(--primary)" }}
                 aria-label="نسخ البروموكود"
               >
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -704,8 +704,8 @@ function RequirementsPage() {
                     className="h-full rounded-full transition-all duration-1000"
                     style={{
                       width: `${Math.max(0, Math.min(100, (waitLeft / 3600) * 100))}%`,
-                      backgroundColor: "#90D600",
-                      boxShadow: "0 0 10px #90D600",
+                      backgroundColor: "var(--primary)",
+                      boxShadow: "0 0 10px var(--primary)",
                     }}
                   />
                 </div>
@@ -715,7 +715,7 @@ function RequirementsPage() {
             <button
               onClick={() => setBlocked(null)}
               className="mt-4 w-full rounded-full py-3 text-sm font-black text-black"
-              style={{ backgroundColor: "#90D600" }}
+              style={{ backgroundColor: "var(--primary)" }}
             >
               حسناً
             </button>
