@@ -69,7 +69,7 @@ export function VerifySequenceDialog({ open, onClose }: { open: boolean; onClose
             target="_blank"
             rel="noreferrer"
             className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "#90D600", boxShadow: "0 0 24px rgba(144,214,0,0.45)" }}
+            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 24px color-mix(in oklab, var(--primary) 50%, transparent)" }}
           >
             <Send className="h-4 w-4" /> الحصول على الكود
           </a>

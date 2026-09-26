@@ -16,7 +16,7 @@ export function Overlay({
         onClick={onClose}
         className="absolute inset-0 cursor-default"
       />
-      <div className="relative w-full max-w-sm animate-scale-in rounded-3xl border border-primary/50 bg-black/90 p-5 shadow-[0_0_60px_rgba(144,214,0,0.25)]">
+      <div className="relative w-full max-w-sm animate-scale-in rounded-3xl border border-primary/50 bg-black/90 p-5 shadow-[0_0_60px_rgba(242,184,56,0.25)]">
         {children}
       </div>
     </div>

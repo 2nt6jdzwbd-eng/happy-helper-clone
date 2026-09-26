@@ -47,7 +47,7 @@ export function Particles() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
         ctx.fillStyle = "rgba(170,255,40,0.95)";
-        ctx.shadowColor = "rgba(144,214,0,0.9)";
+        ctx.shadowColor = "rgba(242,184,56,0.9)";
         ctx.shadowBlur = 12;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -69,7 +69,7 @@ export function Particles() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(144,214,0,0.16),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(242,184,56,0.16),transparent_60%)]" />
       <canvas ref={ref} className="absolute inset-0 h-full w-full" />
     </div>
   );

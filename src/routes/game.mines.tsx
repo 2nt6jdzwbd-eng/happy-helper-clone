@@ -48,7 +48,7 @@ function MinesGame() {
         <Logo size={84} />
 
         <div
-          className="mt-5 rounded-2xl border border-primary/40 bg-cover bg-center p-3 shadow-[0_0_35px_rgba(144,214,0,0.18)]"
+          className="mt-5 rounded-2xl border border-primary/40 bg-cover bg-center p-3 shadow-[0_0_35px_rgba(242,184,56,0.18)]"
           style={{ backgroundImage: `url(${BG})` }}
         >
           <div className="grid grid-cols-5 gap-2">
@@ -67,7 +67,7 @@ function MinesGame() {
                       loading="lazy"
                       width={120}
                       height={120}
-                      className="absolute inset-0 h-full w-full animate-pop-in object-contain p-1 drop-shadow-[0_0_10px_rgba(144,214,0,0.8)]"
+                      className="absolute inset-0 h-full w-full animate-pop-in object-contain p-1 drop-shadow-[0_0_10px_rgba(242,184,56,0.8)]"
                       style={{ animationDelay: `${(gems?.indexOf(i) ?? 0) * 110}ms` }}
                     />
                   )}
@@ -88,7 +88,7 @@ function MinesGame() {
             max={24}
             value={count}
             onChange={(e) => setCount(Number(e.target.value))}
-            className="w-full accent-[#90D600]"
+            className="w-full accent-primary"
           />
         </div>
 
@@ -96,7 +96,7 @@ function MinesGame() {
           <button
             onClick={start}
             className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "#90D600", boxShadow: "0 0 26px rgba(144,214,0,0.45)" }}
+            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 26px color-mix(in oklab, var(--primary) 50%, transparent)" }}
           >
             <Play className="h-4 w-4" /> بدأ
           </button>

@@ -51,7 +51,7 @@ function WildWestGame() {
               style={{ width: 80, height: 30 }}
               className={`rounded-md border text-xs font-black transition ${
                 mode === m
-                  ? "border-primary bg-primary text-black shadow-[0_0_18px_rgba(144,214,0,0.5)]"
+                  ? "border-primary bg-primary text-black shadow-[0_0_18px_rgba(242,184,56,0.5)]"
                   : "border-primary/50 bg-transparent text-foreground"
               }`}
             >
@@ -88,7 +88,7 @@ function WildWestGame() {
           <button
             onClick={start}
             className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "#90D600", boxShadow: "0 0 26px rgba(144,214,0,0.45)" }}
+            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 26px color-mix(in oklab, var(--primary) 50%, transparent)" }}
           >
             <Play className="h-4 w-4" /> بدأ
           </button>

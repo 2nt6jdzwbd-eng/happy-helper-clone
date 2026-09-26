@@ -108,8 +108,8 @@ function AviatorGame() {
           <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="aviator curve">
             <defs>
               <linearGradient id="av-line" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%" stopColor="#90D600" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#90D600" />
+                <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="var(--primary)" />
               </linearGradient>
             </defs>
             {progress > 0 && (
@@ -121,8 +121,8 @@ function AviatorGame() {
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
-                <circle cx={head.x} cy={head.y} r="10" fill="#90D600" opacity="0.25" />
-                <circle cx={head.x} cy={head.y} r="6" fill="#90D600" />
+                <circle cx={head.x} cy={head.y} r="10" fill="var(--primary)" opacity="0.25" />
+                <circle cx={head.x} cy={head.y} r="6" fill="var(--primary)" />
               </>
             )}
           </svg>
@@ -139,7 +139,7 @@ function AviatorGame() {
           <button
             onClick={start}
             className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-            style={{ backgroundColor: "#90D600", boxShadow: "0 0 26px rgba(144,214,0,0.45)" }}
+            style={{ backgroundColor: "var(--primary)", boxShadow: "0 0 26px color-mix(in oklab, var(--primary) 50%, transparent)" }}
           >
             <Play className="h-4 w-4" /> بدأ
           </button>
@@ -168,7 +168,7 @@ function AviatorGame() {
             <button
               onClick={() => setBusy(false)}
               className="mt-5 w-full rounded-xl py-3 text-sm font-black text-black transition active:scale-95"
-              style={{ backgroundColor: "#90D600" }}
+              style={{ backgroundColor: "var(--primary)" }}
             >
               حسناً
             </button>
