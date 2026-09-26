@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Check, Headphones, KeyRound, Play, Send, ShieldCheck, Youtube } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
 import { Button } from "@/components/ui/button";

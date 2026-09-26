@@ -3,7 +3,6 @@ import { useRequireSession } from "@/lib/guard";
 import { useState } from "react";
 import { Play, RotateCcw } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { GameHeaderStats } from "@/components/GameHeaderStats";
 import { WinFeed } from "@/components/WinFeed";
 import { Button } from "@/components/ui/button";
