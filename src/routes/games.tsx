@@ -135,7 +135,7 @@ function GamesPage() {
 
   return (
     <main dir="ltr" className="relative z-10 min-h-screen bg-background pb-16">
-      <TopBar />
+      <TopBar showBack={false} />
 
       <div className="mx-auto max-w-5xl px-4 pt-7 sm:px-6 sm:pt-10">
         <div className="border-b border-border/70 pb-5">

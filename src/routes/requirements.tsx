@@ -26,7 +26,6 @@ import {
   Lock,
 } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
 import { VerifySequenceDialog } from "@/components/VerifySequenceDialog";

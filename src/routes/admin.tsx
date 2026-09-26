@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { Check, Loader2, Trash2, X } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/admin")({
@@ -200,10 +199,9 @@ function AdminPage() {
     <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-20">
       <TopBar />
       <div className="mx-auto max-w-md px-4 pt-6">
-        <Logo size={80} />
-        <h1 className="mt-3 text-center text-lg font-black text-foreground">لوحة المراجعة</h1>
+        <h1 className="mt-3 border-b border-border pb-3 text-center text-4xl text-foreground">لوحة المراجعة</h1>
 
-        <section dir="rtl" className="mt-5 rounded-2xl border border-primary/30 p-3">
+        <section dir="rtl" className="mt-5 rounded-md border border-border bg-card p-3">
           <h2 className="text-center text-xs font-black text-foreground">إيقاف / تشغيل المنصات</h2>
           <div className="mt-3 flex flex-col gap-2">
             {PLATFORM_NAMES.map((name) => {
@@ -225,7 +223,7 @@ function AdminPage() {
           </div>
         </section>
 
-        <section dir="rtl" className="mt-4 rounded-2xl border border-primary/30 p-3">
+        <section dir="rtl" className="mt-4 rounded-md border border-border bg-card p-3">
           <h2 className="text-center text-xs font-black text-foreground">نسبة الفوز (Win rate) للألعاب</h2>
           <div className="mt-3 flex flex-col gap-2">
             {GAME_NAMES.map((name) => {
@@ -250,9 +248,6 @@ function AdminPage() {
                       }
                       aria-label={`نسبة الفوز ${name}`}
                       className="h-2 flex-1 cursor-pointer appearance-none rounded-full bg-primary/20 accent-primary outline-none"
-                      style={{
-                        background: `linear-gradient(to right, hsl(var(--primary)) ${val}%, hsl(var(--primary) / 0.2) ${val}%)`,
-                      }}
                     />
                     <button
                       onClick={() => saveRate(name)}
@@ -305,7 +300,7 @@ function AdminPage() {
           {visible.map((r) => (
             <article
               key={r.id}
-              className="overflow-hidden rounded-2xl border border-primary/30 bg-transparent p-3 backdrop-blur-sm"
+               className="overflow-hidden rounded-md border border-border bg-card p-3"
             >
               <div className="grid grid-cols-2 gap-2">
                 {[r.image1_url, r.image2_url].map((u, i) => (
@@ -346,8 +341,7 @@ function AdminPage() {
                   <button
                     onClick={() => setStatus(r, "approved")}
                     disabled={busy === r.id}
-                    className="flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-black text-black transition active:scale-95 disabled:opacity-50"
-                    style={{ backgroundColor: "var(--primary)" }}
+                     className="flex items-center justify-center gap-2 rounded-sm bg-primary py-3 text-sm font-black text-primary-foreground transition active:scale-95 disabled:opacity-50"
                   >
                     <Check className="h-4 w-4" /> قبول
                   </button>
