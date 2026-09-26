@@ -1,10 +1,10 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Flame, Play, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { Brand } from "@/components/Brand";
+import { Button } from "@/components/ui/button";
 import { ChoiceDialog, CodeDialog } from "@/components/ActivationDialogs";
 import {
   clearAwaitingCode,
@@ -78,8 +78,8 @@ export const Route = createFileRoute("/games")({
 
 
 const GAMES = [
-  { name: "Apple of fortune", img: apple, tag: "HOT", rate: "94%", to: "/game/apple" },
-  { name: "Crash", img: crash, tag: "TOP", rate: "97%", to: "/game/aviator" },
+  { name: "Apple of fortune", subtitle: "لعبة التفاحة", img: apple, rate: "94%", to: "/game/apple" },
+  { name: "Crash", subtitle: "لعبة الطيارة", img: crash, rate: "97%", to: "/game/aviator" },
 
 ];
 
@@ -109,14 +109,6 @@ function GamesPage() {
   const rateOf = (g: { name: string; rate: string }) =>
     rates[g.name] !== undefined ? `${rates[g.name]}%` : g.rate;
 
-  const avgRate = (() => {
-    const vals = GAMES.map((g) => rates[g.name]).filter((v): v is number => typeof v === "number");
-    if (!vals.length) return "94%";
-    return `${Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)}%`;
-  })();
-
-
-
   const play = (to: string) => {
     savePendingGame(to);
     setChoice(to);
@@ -142,105 +134,49 @@ function GamesPage() {
   };
 
   return (
-    <main dir="ltr" className="relative z-10 min-h-screen bg-transparent pb-16">
+    <main dir="ltr" className="relative z-10 min-h-screen bg-background pb-16">
       <TopBar />
 
-      <div className="mx-auto max-w-md px-4 pt-8">
-        <Logo size={120} />
+      <div className="mx-auto max-w-5xl px-4 pt-7 sm:px-6 sm:pt-10">
+        <div className="border-b border-border/70 pb-5">
+          <h1 className="text-5xl leading-none text-foreground sm:text-7xl"><Brand /></h1>
+          <p className="mt-1 text-xs font-bold uppercase text-muted-foreground">Premium signals</p>
+        </div>
 
-        <div
-          className="mx-auto mt-5 flex items-center justify-center overflow-hidden rounded-2xl border border-primary/40 bg-black/40 shadow-[0_0_35px_rgba(242,184,56,0.18)]"
-          style={{ width: 380, maxWidth: "100%", height: 200 }}
-        >
+        <div className="mt-6 overflow-hidden rounded-md border border-border bg-card sm:mt-8">
           <video
             src="https://www.image2url.com/r2/default/videos/1787270560353-b5f64dc7-8096-44ba-9e0e-9562eaf7738c.mov"
-            autoPlay
-            loop
-            muted
-            ref={(el) => {
-              if (!el) return;
-              el.muted = true;
-              el.play().catch(() => {});
-            }}
-            playsInline
-            controls
-            preload="auto"
-            className="h-full w-full object-cover"
+            autoPlay loop muted playsInline controls preload="metadata"
+            className="aspect-video max-h-[390px] w-full bg-card object-cover"
           />
-
         </div>
 
-
-        <h1 className="mt-4 text-center text-2xl">
-          <Brand />
-        </h1>
-        <p className="mt-2 text-center text-sm text-muted-foreground">
-          Premium signals · أعلى نسبة فوز اليوم
-        </p>
-        <p className="mt-1 text-center text-xs text-muted-foreground">
-          كريزي سكربت (crazy script) — سكربت الطياره Aviator وسكربت التفاحه Apple of Fortune
-        </p>
-
-
-        <div className="mt-6 grid grid-cols-3 gap-3">
-          {[
-            { icon: Flame, label: "Hot", value: "5" },
-            { icon: TrendingUp, label: "Winrate", value: avgRate },
-            { icon: Star, label: "VIP", value: "PRO" },
-          ].map((s) => (
-            <div
-              key={s.label}
-              className="rounded-xl border border-primary/25 bg-transparent p-3 text-center backdrop-blur-sm"
-            >
-              <s.icon className="mx-auto h-4 w-4 text-primary" />
-              <div className="mt-1 text-sm font-bold text-foreground">{s.value}</div>
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{s.label}</div>
-            </div>
-          ))}
+        <div className="mt-9 mb-5 flex items-end justify-between border-b border-border pb-3">
+          <div>
+            <h2 className="text-3xl leading-none text-foreground sm:text-4xl">SELECT YOUR GAME</h2>
+            <p className="mt-1 text-sm text-muted-foreground" dir="rtl">اختر لعبتك للبدء</p>
+          </div>
+          <span className="text-sm font-semibold text-primary">02 / 02</span>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-10">
-          {GAMES.map((g, i) => (
-            <div key={g.name} className="flex flex-col items-center gap-4">
-              <div className="flex w-[280px] items-center justify-between text-xs">
-                <span className="font-mono text-muted-foreground">#{String(i + 1).padStart(2, "0")}</span>
-                <span className="rounded-full border border-primary/40 px-2 py-0.5 font-bold text-primary">
-                  {g.tag}
-                </span>
-              </div>
-
-              <div
-                className="group relative overflow-hidden rounded-2xl border border-primary/40 bg-transparent shadow-[0_0_35px_rgba(242,184,56,0.18)] backdrop-blur-sm"
-                style={{ width: 280, height: 180 }}
-              >
-                <img
-                  src={g.img}
-                  alt={g.name}
-                  loading="lazy"
-                  width={800}
-                  height={512}
-                  className="h-full w-full object-cover opacity-70 transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3">
-                  <span className="text-lg font-extrabold text-foreground drop-shadow-[0_0_12px_rgba(0,0,0,0.9)]">
-                    {g.name}
-                  </span>
-                  <span className="rounded-md border border-primary/50 px-1.5 py-0.5 text-[10px] font-bold text-primary">
-                    RTP {rateOf(g)}
-                  </span>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+          {GAMES.map((g) => (
+            <article key={g.name} className="group flex min-w-0 flex-col overflow-hidden rounded-md border border-border bg-card transition-colors hover:border-primary/70">
+              <div className="relative aspect-[2/1] overflow-hidden">
+                <img src={g.img} alt={g.name} width={800} height={512} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute right-3 top-3 flex items-center gap-2 rounded-sm border border-primary/50 bg-background/90 px-2.5 py-1.5">
+                  <span className="text-[10px] font-bold uppercase text-primary">Win rate</span>
+                  <span className="font-['Bebas_Neue'] text-lg leading-none text-foreground">{rateOf(g)}</span>
                 </div>
               </div>
-
-              <button
-                onClick={() => play(g.to)}
-                style={{ width: 280 }}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/95 py-3 text-base font-bold text-black transition-transform active:scale-95"
-              >
-                <Play className="h-4 w-4" />
-                اللعب الآن
-              </button>
-            </div>
+              <div className="flex flex-1 flex-col p-4 sm:p-5">
+                <h3 className="text-3xl leading-none text-foreground sm:text-4xl">{g.name}</h3>
+                <p className="mt-1 mb-4 text-sm text-muted-foreground" dir="rtl">{g.subtitle}</p>
+                <Button onClick={() => play(g.to)} className="mt-auto h-12 w-full rounded-sm text-base font-bold active:scale-[0.98]">
+                  <Play className="h-4 w-4" /> اللعب الآن <ArrowRight className="ml-auto h-4 w-4" />
+                </Button>
+              </div>
+            </article>
           ))}
         </div>
 
