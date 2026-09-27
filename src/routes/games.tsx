@@ -174,7 +174,7 @@ function GamesPage() {
               </div>
               <div className="flex flex-1 flex-col p-4 sm:p-5">
                 <h3 className="text-3xl leading-none text-foreground sm:text-4xl">{g.name}</h3>
-                <p className="mt-1.5 mb-4 text-sm text-foreground/75" dir="rtl">
+                <p className="mt-1.5 mb-4 text-left text-sm text-foreground/75" dir="rtl">
                   {g.subtitle}
                 </p>
                 <Button onClick={() => play(g.to)} className="mt-auto h-12 w-full rounded-sm text-base font-bold active:scale-[0.98]">
