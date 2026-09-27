@@ -12,7 +12,6 @@ import { supabase } from "@/integrations/supabase/client";
 import logo1xBet from "@/assets/platform-1xbet.png";
 import logoLineBet from "@/assets/platform-linebet.png";
 import logoWinWin from "@/assets/platform-winwin.png";
-import logoGreenBet from "@/assets/platform-greenbet.png";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -33,7 +32,6 @@ const PLATFORMS = [
   { name: "1xBet", logo: logo1xBet },
   { name: "LineBet", logo: logoLineBet },
   { name: "WinWin", logo: logoWinWin },
-  { name: "GreenBet", logo: logoGreenBet },
 ];
 
 const PLATFORM_VIDEOS: Record<string, string> = {
@@ -41,7 +39,6 @@ const PLATFORM_VIDEOS: Record<string, string> = {
   "1xBet": "https://www.image2url.com/r2/default/videos/1787235653264-c44094cc-4385-4fe3-978e-a3feb4a2e78c.mp4",
   LineBet: "https://www.image2url.com/r2/default/videos/1787234470504-9edf40ff-3f9c-4960-a26c-688a1dd565de.mp4",
   WinWin: "https://www.image2url.com/r2/default/videos/1787235488828-185d05cd-cc1a-4859-ade8-7ee4789a7d2a.mp4",
-  GreenBet: "https://www.image2url.com/r2/default/videos/1787233737822-f7627173-f13a-4513-b386-594490cad858.mp4",
 };
 
 function Reveal({ children }: { children: React.ReactNode }) {

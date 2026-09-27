@@ -10,7 +10,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "crazy script (كريزي سكربت): سكربت الطياره Aviator وسكربت التفاحه Apple of Fortune وإشارات ألعاب 1xBet وLineBet وWinWin وGreenBet وUltrapari مع كود تفعيل.",
+          "crazy script (كريزي سكربت): سكربت الطياره Aviator وسكربت التفاحه Apple of Fortune وإشارات ألعاب 1xBet وLineBet وWinWin وUltrapari مع كود تفعيل.",
       },
       { property: "og:title", content: "كريزي سكربت crazy script | سكربت الطياره وسكربت التفاحه" },
       { property: "og:description", content: "ابدأ الآن مع crazy script واحصل على كود التفعيل الخاص بك." },
