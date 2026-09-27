@@ -175,3 +175,7 @@
   0% { opacity: 0; transform: scale(0.4) rotate(-12deg); }
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
+
+/* Hide Google Translate banner */
+.goog-te-banner-frame, .skiptranslate > iframe, #goog-gt-tt { display: none !important; }
+body { top: 0 !important; }
