@@ -13,7 +13,7 @@ import {
   savePendingGame,
 } from "@/lib/session";
 import { supabase } from "@/integrations/supabase/client";
-import apple from "@/assets/game-apple-red.jpg";
+import appleLogo from "@/assets/apple-logo.jpg.asset.json";
 import planeLogo from "@/assets/plane-logo.jpg.asset.json";
 
 const crash = planeLogo.url;

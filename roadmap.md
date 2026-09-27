@@ -1,2 +1,4 @@
 - [x] Apply the chosen black/red/silver visual style to shared elements and the two-game selection screen.
 - [x] Check the selection-to-activation flow and desktop/mobile rendering.
+- [x] Replace the plane game cover with the user's uploaded airplane picture.
+- [ ] Replace the apple game cover with the user's uploaded "Apple of Fortune" picture and verify it renders.
