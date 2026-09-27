@@ -28,17 +28,44 @@ function currentLang() {
   return m?.[1] ? decodeURIComponent(m[1]) : "ar";
 }
 
+function setCookie(code: string) {
+  const host = location.hostname;
+  const expire = "expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  document.cookie = `googtrans=; ${expire}; path=/`;
+  document.cookie = `googtrans=; ${expire}; path=/; domain=.${host}`;
+  if (code !== "ar") {
+    document.cookie = `googtrans=/ar/${code}; path=/`;
+    document.cookie = `googtrans=/ar/${code}; path=/; domain=.${host}`;
+  }
+}
+
+// Drive Google's hidden combo box so the page translates instantly, no reload.
+function applyTranslation(code: string, attempt = 0) {
+  const combo = document.querySelector<HTMLSelectElement>("select.goog-te-combo");
+  if (!combo) {
+    if (attempt < 40) setTimeout(() => applyTranslation(code, attempt + 1), 250);
+    return;
+  }
+  combo.value = code;
+  combo.dispatchEvent(new Event("change"));
+}
+
 export function LanguageSwitcher() {
   const [lang, setLang] = useState("ar");
 
   useEffect(() => {
-    setLang(currentLang());
-    if (document.getElementById("gt-script")) return;
+    const initial = currentLang();
+    setLang(initial);
+    if (document.getElementById("gt-script")) {
+      if (initial !== "ar") applyTranslation(initial);
+      return;
+    }
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
         { pageLanguage: "ar", autoDisplay: false },
         "gt-element",
       );
+      if (initial !== "ar") applyTranslation(initial);
     };
     const s = document.createElement("script");
     s.id = "gt-script";
@@ -47,15 +74,9 @@ export function LanguageSwitcher() {
   }, []);
 
   const change = (code: string) => {
-    const host = location.hostname;
-    const expire = "expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    document.cookie = `googtrans=; ${expire}; path=/`;
-    document.cookie = `googtrans=; ${expire}; path=/; domain=.${host}`;
-    if (code !== "ar") {
-      document.cookie = `googtrans=/ar/${code}; path=/`;
-      document.cookie = `googtrans=/ar/${code}; path=/; domain=.${host}`;
-    }
-    location.reload();
+    setLang(code);
+    setCookie(code);
+    applyTranslation(code);
   };
 
   return (
