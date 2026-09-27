@@ -45,7 +45,7 @@ const rpc = supabase.rpc.bind(supabase) as unknown as (
   args: Record<string, unknown>,
 ) => Promise<{ data: unknown; error: unknown }>;
 
-const PLATFORM_NAMES = ["Ultrapari", "1xBet", "LineBet", "WinWin", "GreenBet"];
+const PLATFORM_NAMES = ["Ultrapari", "1xBet", "LineBet", "WinWin"];
 
 const GAME_NAMES = ["Apple of fortune", "Crash"];
 

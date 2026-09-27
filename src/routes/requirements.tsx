@@ -68,7 +68,6 @@ const PLATFORM_LINKS: Record<string, string> = {
   Ultrapari: "https://refpa42156.com/L?tag=d_5991719m_118431c_apk&site=5991719&ad=118431",
   "1xBet": "https://reffpa.com/L?tag=d_2845435m_27409c_&site=2845435&ad=27409",
   LineBet: "https://lb-aff.com/L?tag=d_6015821m_66803c_apk1&site=6015821&ad=66803",
-  GreenBet: "https://refpa79184.com/L?tag=d_5982434m_132250c_&site=5982434&ad=132250",
   WinWin: "https://refpa49781.com/L?tag=d_5981657m_68383c_&site=5981657&ad=68383",
 };
 
@@ -76,7 +75,6 @@ const PLATFORM_DEPOSITS: Record<string, string[]> = {
   Ultrapari: ["150 جنيه", "4 دولار"],
   "1xBet": ["300 جنيه", "6 دولار"],
   LineBet: ["300 جنيه", "6 دولار"],
-  GreenBet: ["200 جنيه", "5 دولار"],
   WinWin: ["200 جنيه", "5 دولار"],
 };
 
