@@ -158,16 +158,25 @@ function GamesPage() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
           {GAMES.map((g) => (
             <article key={g.name} className="group flex min-w-0 flex-col overflow-hidden rounded-md border border-border bg-card transition-colors hover:border-primary/70">
-              <div className="relative aspect-[2/1] overflow-hidden">
-                 <img src={g.img} alt={g.name} loading="lazy" width={1024} height={640} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div className="relative aspect-[4/3] overflow-hidden bg-card">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(200,40,54,0.30),transparent_62%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,17,19,0.75)_0%,transparent_30%,transparent_62%,rgba(16,17,19,0.85)_100%)]" />
+                <img
+                  src={g.img}
+                  alt={g.name}
+                  loading="lazy"
+                  className="absolute left-1/2 top-1/2 h-[78%] max-h-[262px] w-auto -translate-x-1/2 -translate-y-1/2 rounded-md border border-border/80 object-cover shadow-[0_20px_45px_-12px_rgba(0,0,0,0.95)] ring-1 ring-primary/30 transition-transform duration-500 group-hover:scale-[1.05]"
+                />
                 <div className="absolute right-3 top-3 flex items-center gap-2 rounded-sm border border-primary/50 bg-background/90 px-2.5 py-1.5">
-                  <span className="text-[10px] font-bold uppercase text-primary">Win rate</span>
-                  <span className="font-['Bebas_Neue'] text-lg leading-none text-foreground">{rateOf(g)}</span>
+                  <span className="text-[10px] font-bold uppercase text-muted-foreground">Win rate</span>
+                  <span className="font-['Bebas_Neue'] text-xl leading-none text-primary">{rateOf(g)}</span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-4 sm:p-5">
                 <h3 className="text-3xl leading-none text-foreground sm:text-4xl">{g.name}</h3>
-                <p className="mt-1 mb-4 text-sm text-muted-foreground" dir="rtl">{g.subtitle}</p>
+                <p className="mt-1.5 mb-4 text-left text-sm text-foreground/75" dir="rtl">
+                  {g.subtitle}
+                </p>
                 <Button onClick={() => play(g.to)} className="mt-auto h-12 w-full rounded-sm text-base font-bold active:scale-[0.98]">
                   <Play className="h-4 w-4" /> اللعب الآن <ArrowRight className="ml-auto h-4 w-4" />
                 </Button>
