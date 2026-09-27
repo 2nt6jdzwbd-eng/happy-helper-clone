@@ -17,6 +17,7 @@ import appleLogo from "@/assets/apple-logo.jpg.asset.json";
 import planeLogo from "@/assets/plane-logo.jpg.asset.json";
 
 const crash = planeLogo.url;
+const apple = appleLogo.url;
 
 export const Route = createFileRoute("/games")({
   head: () => ({
