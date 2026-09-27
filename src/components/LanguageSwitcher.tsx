@@ -25,7 +25,7 @@ declare global {
 
 function currentLang() {
   const m = document.cookie.match(/googtrans=\/[^/]*\/([^;]+)/);
-  return m ? decodeURIComponent(m[1]) : "ar";
+  return m?.[1] ? decodeURIComponent(m[1]) : "ar";
 }
 
 export function LanguageSwitcher() {
