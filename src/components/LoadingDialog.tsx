@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const SEGMENTS = 24;
+
 export function LoadingDialog({ open, duration = 3000 }: { open: boolean; duration?: number }) {
   const [pct, setPct] = useState(0);
 
@@ -17,68 +19,68 @@ export function LoadingDialog({ open, duration = 3000 }: { open: boolean; durati
 
   if (!open) return null;
 
-  const r = 26;
-  const c = 2 * Math.PI * r;
+  const lit = Math.round((pct / 100) * SEGMENTS);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md">
-      <div className="relative flex items-center justify-center">
-        {/* outer pulse halo */}
-        <span
-           className="absolute h-[110px] w-[110px] animate-ping rounded-md bg-primary/10"
-        />
-        {/* rotating dashed ring */}
-        <svg
-          className="absolute h-[100px] w-[100px] animate-spin [animation-duration:3.5s]"
-          viewBox="0 0 100 100"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="46"
-            fill="none"
-            stroke="var(--primary)"
-            strokeOpacity="0.45"
-            strokeWidth="1.5"
-            strokeDasharray="4 10"
-            strokeLinecap="round"
-          />
-        </svg>
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-background/95 backdrop-blur-md">
+      {/* crimson stage glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 45% at 50% 60%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%)",
+        }}
+      />
+      {/* sweeping scanline */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-full overflow-hidden">
         <div
-           className="relative flex items-center justify-center rounded-md border-2 border-primary bg-card shadow-xl"
+          className="h-16 w-full animate-[signal-scan_2.2s_linear_infinite]"
           style={{
-            width: 80,
-            height: 80,
+            background:
+              "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--primary) 10%, transparent), transparent)",
           }}
-        >
-          {/* corner ticks */}
-          <span className="absolute left-1 top-1 h-2.5 w-2.5 rounded-tl border-l-2 border-t-2" style={{ borderColor: "var(--primary)" }} />
-          <span className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-br border-b-2 border-r-2" style={{ borderColor: "var(--primary)" }} />
+        />
+      </div>
 
-          <svg width="64" height="64" viewBox="0 0 64 64" className="-rotate-90">
-            <circle cx="32" cy="32" r={r} fill="none" stroke="var(--primary)" strokeOpacity="0.18" strokeWidth="4" />
-            <circle
-              cx="32"
-              cy="32"
-              r={r}
-              fill="none"
-              stroke="var(--primary)"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeDasharray={c}
-              strokeDashoffset={c - (pct / 100) * c}
+      <div className="relative flex w-[min(320px,82vw)] flex-col items-center gap-5">
+        {/* brand mark */}
+        <div className="notranslate text-center font-display text-3xl tracking-wide">
+          <span className="text-foreground">CRAZY</span>{" "}
+          <span className="text-primary">SCRIPT</span>
+        </div>
+
+        {/* big percentage */}
+        <div className="font-display text-7xl leading-none text-primary tabular-nums [text-shadow:0_0_28px_color-mix(in_srgb,var(--primary)_55%,transparent)]">
+          {Math.round(pct)}
+          <span className="text-3xl text-foreground/70">%</span>
+        </div>
+
+        {/* segmented signal bar */}
+        <div className="flex w-full items-end justify-center gap-[3px]" dir="ltr">
+          {Array.from({ length: SEGMENTS }).map((_, i) => (
+            <span
+              key={i}
+              className="w-full rounded-[1px] transition-colors duration-100"
+              style={{
+                height: 10 + Math.sin((i / (SEGMENTS - 1)) * Math.PI) * 14,
+                background:
+                  i < lit
+                    ? "var(--primary)"
+                    : "color-mix(in srgb, var(--muted-foreground) 25%, transparent)",
+                boxShadow: i < lit ? "0 0 8px color-mix(in srgb, var(--primary) 60%, transparent)" : undefined,
+              }}
             />
-          </svg>
+          ))}
+        </div>
 
-          <span
-            className="absolute text-[13px] font-black tabular-nums"
-            style={{ color: "var(--primary)" }}
-          >
-            {Math.round(pct)}%
-          </span>
+        {/* status line */}
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+          جاري ضبط الإشارة…
         </div>
       </div>
+
+      <style>{`@keyframes signal-scan { from { transform: translateY(-10vh); } to { transform: translateY(110vh); } }`}</style>
     </div>
   );
 }
