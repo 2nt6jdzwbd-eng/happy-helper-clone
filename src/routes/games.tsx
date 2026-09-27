@@ -165,16 +165,18 @@ function GamesPage() {
                   src={g.img}
                   alt={g.name}
                   loading="lazy"
-                  className="absolute left-1/2 top-1/2 h-[70%] max-h-[250px] w-auto -translate-x-1/2 -translate-y-1/2 rounded-md border border-border/80 object-cover shadow-[0_20px_45px_-12px_rgba(0,0,0,0.95)] ring-1 ring-primary/30 transition-transform duration-500 group-hover:scale-[1.05]"
+                  className="absolute left-1/2 top-1/2 h-[78%] max-h-[262px] w-auto -translate-x-1/2 -translate-y-1/2 rounded-md border border-border/80 object-cover shadow-[0_20px_45px_-12px_rgba(0,0,0,0.95)] ring-1 ring-primary/30 transition-transform duration-500 group-hover:scale-[1.05]"
                 />
                 <div className="absolute right-3 top-3 flex items-center gap-2 rounded-sm border border-primary/50 bg-background/90 px-2.5 py-1.5">
-                  <span className="text-[10px] font-bold uppercase text-primary">Win rate</span>
-                  <span className="font-['Bebas_Neue'] text-lg leading-none text-foreground">{rateOf(g)}</span>
+                  <span className="text-[10px] font-bold uppercase text-muted-foreground">Win rate</span>
+                  <span className="font-['Bebas_Neue'] text-xl leading-none text-primary">{rateOf(g)}</span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-4 sm:p-5">
                 <h3 className="text-3xl leading-none text-foreground sm:text-4xl">{g.name}</h3>
-                <p className="mt-1 mb-4 text-sm text-muted-foreground" dir="rtl">{g.subtitle}</p>
+                <p className="mt-1.5 mb-4 text-sm text-foreground/75" dir="rtl">
+                  {g.subtitle}
+                </p>
                 <Button onClick={() => play(g.to)} className="mt-auto h-12 w-full rounded-sm text-base font-bold active:scale-[0.98]">
                   <Play className="h-4 w-4" /> اللعب الآن <ArrowRight className="ml-auto h-4 w-4" />
                 </Button>
