@@ -10,4 +10,4 @@
 - [ ] Point Telegram notifications at the user's own bot — needs their bot token (the original author's token is still in the code)
 - [ ] Import the user's existing activation codes / users — needs their CSV/JSON export
 - [x] Language switcher applies instantly without page reload (Google combo drive)
-- [ ] Restyle the loading dialog (broadcast signal-lock look)
+- [x] Restyle the loading dialog (broadcast signal-lock look)
